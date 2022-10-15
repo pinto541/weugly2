@@ -30,6 +30,8 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
 
+  api_cache_manager: ^1.0.2
+  snippet_coder_utils: ^1.0.9
   flutter:
     sdk: flutter
 
@@ -59,10 +61,10 @@ flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
-  uses-material-design: true
+   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:
+   assets:
      - assets/icons/menu.svg
   #   - images/a_dot_ham.jpeg
 

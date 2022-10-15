@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/signup.dart';
 
 import 'constants.dart';
 import 'homescreen.dart';
-
+import 'package:untitled/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,9 +24,15 @@ class MyApp extends StatelessWidget {
        scaffoldBackgroundColor: Colors.blueGrey,
         textTheme: const TextTheme(
           bodyText2: TextStyle(color: Colors.black),
-        )
+
+
+        ),
       ),
- home: const HomeScreen(),
+  routes: {
+  '/' : (context) => login(),
+    '/signup': (context) => const signup(),
+  },
+
     );
   }
 }
