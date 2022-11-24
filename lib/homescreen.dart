@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:untitled/constants.dart';
-import 'package:untitled/models/product.dart';
-import 'package:untitled/widgets/widget_home_products.dart';
 
-import 'package:untitled/widgets_home_categories.dart';
-import 'components/product_card.dart';
+import 'package:untitled/productcart.dart';
+
+import 'cart/cart_screen.dart';
+import 'components/categories.dart';
 import 'models/category.dart';
 import 'components/components.search.dart';
 import 'components/sectiontitles.dart';
@@ -19,23 +19,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Product model =Product(
-        productName: "lungi",
-        category:  Category(
-            categoryName: "pants",
-            categoryImage: "",
-            categoryId: "123654"
-        ),
-
-        productShortDescription: "the great lungi",
-        productPrice: 500,
-        productSalePrice : 400,
-        productImage: "",
-        productSKU: "6A-001",
-        productType : "single",
-        stockStatus : "IN",
-        productId: "123456987"
-    );
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -97,24 +80,43 @@ class HomeScreen extends StatelessWidget {
                 Image.network(
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-YaGfGqZWYmjVcubKSqPPEYuPbMtHIuSzNw&usqp=CAU"),
                 const SizedBox(height: defaultPadding),
-                const HomeCategoriesWidget(),
+                const categories(),
                 const SizedBox(height: defaultPadding),
 
                 sectiontitle(title: 'new arrival',
                     pressSeeAll: () {}
                 ),
-                 const HomeProductsWidget(),
-                 const SingleChildScrollView(
+                SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
+                  child: Row(
+                      children:
+                      List.generate(demo_categories.length,
+                              (index) =>
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: defaultPadding)
+                                ,
+                                child: productcart(
 
+                                  image: demo_categories[index].image,
+
+                                  title: demo_categories[index].title,
+                                  price: demo_categories[index].price,
+                                  bgColor: demo_categories[index].bgColor,
+                                  press: () {},
+
+
+                                ),
+                              )
+                      )
+
+                  ),
                 ),
               ]
           ),
         ),
       ),
       drawer:const home_drawer(),
-
-
 
     );
   }
